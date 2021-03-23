@@ -53,6 +53,6 @@ public class SecondFragment extends Fragment {
 
     private void modifyTextView(int count){
         TextView t = getView().findViewById(R.id.countText);
-        t.setText(count);
+        t.setText(String.valueOf(count));
     }
 }
