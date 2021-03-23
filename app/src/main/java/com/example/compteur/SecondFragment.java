@@ -37,6 +37,7 @@ public class SecondFragment extends Fragment {
 
         model = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
         count = model.getCompte();
+        modifyTextView(count);
     }
 
     private void minusCount(){
