@@ -8,10 +8,12 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
 
 public class SecondFragment extends Fragment {
     private int count = 0;
+    private CountViewModel model;
     @Override
     public View onCreateView(
             LayoutInflater inflater, ViewGroup container,
@@ -32,22 +34,28 @@ public class SecondFragment extends Fragment {
         view.findViewById(R.id.plusButton).setOnClickListener(view1 -> plusCount());
 
         view.findViewById(R.id.RAZButton).setOnClickListener(view1 -> razCount());
+
+        model = new ViewModelProvider(requireActivity()).get(CountViewModel.class);
+        count = model.getCompte();
     }
 
     private void minusCount(){
         if(count>0){
             count--;
         }
+        model.setCompte(count);
         modifyTextView(count);
     }
 
     private void plusCount(){
         count++;
+        model.setCompte(count);
         modifyTextView(count);
     }
 
     private void razCount(){
         count=0;
+        model.setCompte(count);
         modifyTextView(count);
     }
 
